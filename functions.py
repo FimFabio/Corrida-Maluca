@@ -16,3 +16,36 @@ def acelera(movXCar1, movXCar2, movXCar3):
    movXCar2 = movXCar2 + random.randint(0,10)
    movXCar3 = movXCar3 + random.randint(0,10)
    return [movXCar1, movXCar2, movXCar3]
+
+def win1(movXCar1, movXCar2, movXCar3, tela, fonte1, vermelho):
+   diferenca1 = movXCar1 - movXCar2
+   diferenca2 = movXCar1 - movXCar3
+   if diferenca1 > diferenca2:
+         diferenca3 = movXCar3 - movXCar2
+         tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
+   else:
+         diferenca3 = movXCar2 - movXCar3
+         tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
+
+def win2(movXCar1, movXCar2, movXCar3, tela, fonte1, amarelo):
+   diferenca1 = movXCar2 - movXCar1
+   diferenca2 = movXCar2 - movXCar3
+   if diferenca1 > diferenca2:
+      diferenca3 = movXCar3 - movXCar1
+      tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
+   else:
+      diferenca3 = movXCar1 - movXCar3
+      tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
+
+def win3(movXCar1, movXCar2, movXCar3, tela, fonte1, azul):
+   diferenca1 = movXCar3 - movXCar1
+   diferenca2 = movXCar3 - movXCar2
+   if diferenca1 > diferenca2:
+      diferenca3 = movXCar2 - movXCar1
+      tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
+   else:
+      diferenca3 = movXCar1 - movXCar2
+      tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
+
+def desce_tela():
+    

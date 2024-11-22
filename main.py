@@ -3,6 +3,9 @@ import random
 from functions import final_position
 from functions import att_tela
 from functions import acelera
+from functions import win1
+from functions import win2
+from functions import win3
 
 pygame.init()
 tamanho = (1000,592)
@@ -66,45 +69,24 @@ while True:
             pygame.mixer.Sound.play(vitoria)
             somDaVitoria = True
         if ganhou1 == True:
-            diferenca1 = movXCar1 - movXCar2
-            diferenca2 = movXCar1 - movXCar3
-            if diferenca1 > diferenca2:
-                diferenca3 = movXCar3 - movXCar2
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
-            else:
-                diferenca3 = movXCar2 - movXCar3
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
+            win1(movXCar1, movXCar2, movXCar3, tela, fonte1, vermelho)
 
         if ganhou2 == True:
-            diferenca1 = movXCar2 - movXCar1
-            diferenca2 = movXCar2 - movXCar3
-            if diferenca1 > diferenca2:
-                diferenca3 = movXCar3 - movXCar1
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
-            else:
-                diferenca3 = movXCar1 - movXCar3
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
-        if ganhou3 == True:
-            diferenca1 = movXCar3 - movXCar1
-            diferenca2 = movXCar3 - movXCar2
-            if diferenca1 > diferenca2:
-                diferenca3 = movXCar2 - movXCar1
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
-            else:
-                diferenca3 = movXCar1 - movXCar2
-                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
+            win2(movXCar1, movXCar2, movXCar3, tela, fonte1, amarelo)
 
+        if ganhou3 == True:
+            win3(movXCar1, movXCar2, movXCar3, tela, fonte1, azul)
     
     if movXCar1 > 1010:
-        movXCar1 = 0
+        movXCar1 = -10
         posYCar1 = 350
         
     if movXCar2 > 1010:
-        movXCar2 = 0
+        movXCar2 = -10
         posYCar2 = 420
     
     if movXCar3 > 1010:
-        movXCar3 = 0
+        movXCar3 = -10
         posYCar3 = 500
     
 
@@ -121,7 +103,7 @@ while True:
             acabou = True
 
     pygame.display.update()
-    clock.tick(5000)
+    clock.tick(60)
 pygame.quit()
     
 
