@@ -11,6 +11,9 @@ pygame.display.set_icon(icone)
 pygame.display.set_caption("Corrida Maluca")
 branco = (255,255,255)
 preta = (0,0,0)
+vermelho = (255,0,0)
+amarelo = (255,255,0)
+azul = (0,0,255)
 fundo = pygame.image.load("Recursos/fundo.png")
 carro1 = pygame.image.load("Recursos/carro1.png")
 carro2 = pygame.image.load("Recursos/carro2.png")
@@ -44,13 +47,12 @@ while True:
         if evento.type == pygame.QUIT:
             quit()
    
-    tela.fill( branco )
-    tela.blit(fundo, (0,0))
     
     if not acabou:
         movXCar1 = movXCar1 + random.randint(0,10)
         movXCar2 = movXCar2 + random.randint(0,8)
-        movXCar3 = movXCar3 + random.randint(0,9)
+        movXCar3 = movXCar3 + random.randint(0,11)
+        tela.blit(fundo, (0,0))
         tela.blit(carro1, (movXCar1,posYCar1))
         tela.blit(carro2, (movXCar2,posYCar2))
         tela.blit(carro3, (movXCar3,posYCar3))
@@ -67,30 +69,31 @@ while True:
             diferenca1 = movXCar1 - movXCar2
             diferenca2 = movXCar1 - movXCar3
             if diferenca1 > diferenca2:
-                tela.blit(fonte1.render("Carro 3 em segundo carro 2 em terceiro", True, branco), (200,250))
+                diferenca3 = movXCar3 - movXCar2
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
             else:
-                tela.blit(fonte1.render("carro 2 em segundo arro 3 em terciero", True, branco), (200,250))
+                diferenca3 = movXCar2 - movXCar3
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, vermelho), (20,250))
 
         if ganhou2 == True:
             diferenca1 = movXCar2 - movXCar1
             diferenca2 = movXCar2 - movXCar3
             if diferenca1 > diferenca2:
-                print("Carro 3 em segundo")
-                print("carro 1 em terceiro")
+                diferenca3 = movXCar3 - movXCar1
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
             else:
-                print("carro 1 em segundo")
-                print("carro 3 em terceiro")
-        if ganhou2 == True:
-            diferenca1 = movXCar2 - movXCar1
-            diferenca2 = movXCar2 - movXCar3
+                diferenca3 = movXCar1 - movXCar3
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, amarelo), (20,250))
+        if ganhou3 == True:
+            diferenca1 = movXCar3 - movXCar1
+            diferenca2 = movXCar3 - movXCar2
             if diferenca1 > diferenca2:
-                print("Carro 3 em segundo")
-                print("carro 1 em terceiro")
+                diferenca3 = movXCar2 - movXCar1
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca2) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
             else:
-                print("carro 1 em segundo")
-                print("carro 3 em terceiro")
-            
-        
+                diferenca3 = movXCar1 - movXCar2
+                tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
+
     
     if movXCar1 > 1010:
         movXCar1 = 0
@@ -118,7 +121,7 @@ while True:
             acabou = True
 
     pygame.display.update()
-    clock.tick(200)
+    clock.tick(5000)
 pygame.quit()
     
 
