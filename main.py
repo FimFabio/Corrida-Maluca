@@ -18,6 +18,7 @@ fundo = pygame.image.load("Recursos/fundo.png")
 carro1 = pygame.image.load("Recursos/carro1.png")
 carro2 = pygame.image.load("Recursos/carro2.png")
 carro3 = pygame.image.load("Recursos/carro3.png")
+win = pygame.image.load("Recursos/vitoria.jpg")
 
 movXCar1 = 0
 movXCar2 = 0
@@ -38,9 +39,9 @@ somDaVitoria = False
 
 fonte = pygame.font.Font("freesansbold.ttf",60)
 fonte1 = pygame.font.Font("freesansbold.ttf",20)
-textoVermelho = fonte.render("Vermelho Ganhou!", True, branco)
-textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco)
-textoAzul = fonte.render("Azul Ganhou!", True, branco)
+textoVermelho = fonte.render("Vermelho Ganhou!", True, preta)
+textoAmarelo = fonte.render("Amarelo Ganhou!", True, preta)
+textoAzul = fonte.render("Azul Ganhou!", True, preta)
 
 while True:
     for evento in pygame.event.get(): 
@@ -59,9 +60,7 @@ while True:
     
     else:
         pygame.mixer.music.stop()
-        tela.blit(carro1, (movXCar1,posYCar1))
-        tela.blit(carro2, (movXCar2,posYCar2))
-        tela.blit(carro3, (movXCar3,posYCar3))
+        tela.blit(win, (0,0))
         if somDaVitoria == False:
             pygame.mixer.Sound.play(vitoria)
             somDaVitoria = True
