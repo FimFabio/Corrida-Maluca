@@ -1,6 +1,4 @@
 import pygame
-import random
-from functions import final_position
 from functions import att_tela
 from functions import acelera
 from functions import win1
@@ -15,11 +13,9 @@ tela = pygame.display.set_mode( tamanho )
 icone = pygame.image.load("Recursos/icone.ico")
 pygame.display.set_icon(icone)
 pygame.display.set_caption("Corrida Maluca")
-branco = (255,255,255)
-preta = (0,0,0)
-vermelho = (255,0,0)
-amarelo = (255,255,0)
-azul = (0,0,255)
+pygame.mixer.music.load("Recursos/trilha.mp3")
+pygame.mixer.music.play(-1)
+
 fundo = pygame.image.load("Recursos/fundo.png")
 carro1 = pygame.image.load("Recursos/carro1.png")
 carro2 = pygame.image.load("Recursos/carro2.png")
@@ -33,16 +29,20 @@ posYCar1 = 30
 posYCar2 = 110
 posYCar3 = 200
 
-vitoria = pygame.mixer.Sound("Recursos/vitoria.mp3")
-vitoria.set_volume(0.5)
-pygame.mixer.music.load("Recursos/trilha.mp3")
-pygame.mixer.music.play(-1) #-1 looping, 1,2 3 vezes
+branco = (255,255,255)
+preta = (0,0,0)
+vermelho = (255,0,0)
+amarelo = (255,255,0)
+azul = (0,0,255)
+
 acabou = False
 ganhou1 = False
 ganhou2 = False
 ganhou3 = False
 somDaVitoria = False
 
+vitoria = pygame.mixer.Sound("Recursos/vitoria.mp3")
+vitoria.set_volume(0.5)
 fonte = pygame.font.Font("freesansbold.ttf",60)
 fonte1 = pygame.font.Font("freesansbold.ttf",20)
 textoVermelho = fonte.render("Vermelho Ganhou!", True, preta)
@@ -53,7 +53,6 @@ while True:
     for evento in pygame.event.get(): 
         if evento.type == pygame.QUIT:
             quit()
-   
     
     if not acabou:
         lista = acelera(movXCar1, movXCar2, movXCar3)
@@ -61,7 +60,6 @@ while True:
         movXCar2 = lista[1]
         movXCar3 = lista[2]
         att_tela(carro1, movXCar1, posYCar1, carro2, movXCar2, posYCar2, carro3, movXCar3, posYCar3, fundo, tela)
-        
     
     else:
         pygame.mixer.music.stop()
@@ -105,5 +103,3 @@ while True:
     pygame.display.update()
     clock.tick(60)
 pygame.quit()
-    
-
