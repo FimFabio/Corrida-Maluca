@@ -6,6 +6,7 @@ from functions import acelera
 from functions import win1
 from functions import win2
 from functions import win3
+from functions import teste
 
 pygame.init()
 tamanho = (1000,592)
@@ -89,18 +90,16 @@ while True:
         movXCar3 = -10
         posYCar3 = 500
     
-
-    
-    if posYCar1 == 350 and posYCar2 == 420 and posYCar3 == 500:
-        ganhou1 = final_position(movXCar1, textoVermelho, ganhou1, tela)
-        ganhou2 = final_position(movXCar2, textoAmarelo, ganhou2, tela)
-        ganhou3 = final_position(movXCar3, textoAzul, ganhou3, tela)
-        if ganhou1 == True:
-            acabou = True
-        if ganhou2 == True:
-            acabou = True
-        if ganhou3 == True:
-            acabou = True
+    alguma = teste(movXCar1, textoVermelho, tela, movXCar2, textoAmarelo, movXCar3, textoAzul, posYCar1, posYCar2, posYCar3, ganhou3, ganhou2, ganhou1)
+    if alguma[0] == True:
+        ganhou1 = True
+        acabou = True
+    if alguma[1] == True:
+        ganhou2 = True
+        acabou = True
+    if alguma[2] == True:
+        ganhou3 = True
+        acabou = True
 
     pygame.display.update()
     clock.tick(60)
