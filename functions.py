@@ -47,15 +47,8 @@ def win3(movXCar1, movXCar2, movXCar3, tela, fonte1, azul):
       diferenca3 = movXCar1 - movXCar2
       tela.blit(fonte1.render("Distância entre o primerio e o segundo é de " + str(diferenca1) + ", a Distância entre o segundo e o terceiro é de " + str(diferenca3), True, azul), (20,250))
 
-def teste(movXCar1, textoVermelho, tela, movXCar2, textoAmarelo, movXCar3, textoAzul, posYCar1, posYCar2, posYCar3, ganhou3, ganhou2, ganhou1):
-   if posYCar1 == 350 and posYCar2 == 420 and posYCar3 == 500:
-      ganhou1 = final_position(movXCar1, textoVermelho, ganhou1, tela)
-      ganhou2 = final_position(movXCar2, textoAmarelo, ganhou2, tela)
-      ganhou3 = final_position(movXCar3, textoAzul, ganhou3, tela)
-      if ganhou1 == True:
-         acabou = True
-      if ganhou2 == True:
-         acabou = True
-      if ganhou3 == True:
-         acabou = True
+def teste(movXCar1, textoVermelho, tela, movXCar2, textoAmarelo, movXCar3, textoAzul, ganhou3, ganhou2, ganhou1):
+   ganhou1 = final_position(movXCar1, textoVermelho, ganhou1, tela)
+   ganhou2 = final_position(movXCar2, textoAmarelo, ganhou2, tela)
+   ganhou3 = final_position(movXCar3, textoAzul, ganhou3, tela)
    return [ganhou1, ganhou2, ganhou3]

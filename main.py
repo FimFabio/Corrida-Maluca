@@ -89,17 +89,18 @@ while True:
     if movXCar3 > 1010:
         movXCar3 = -10
         posYCar3 = 500
-    
-    alguma = teste(movXCar1, textoVermelho, tela, movXCar2, textoAmarelo, movXCar3, textoAzul, posYCar1, posYCar2, posYCar3, ganhou3, ganhou2, ganhou1)
-    if alguma[0] == True:
-        ganhou1 = True
-        acabou = True
-    if alguma[1] == True:
-        ganhou2 = True
-        acabou = True
-    if alguma[2] == True:
-        ganhou3 = True
-        acabou = True
+
+    if posYCar1 == 350 and posYCar2 == 420 and posYCar3 == 500:
+        alguma = teste(movXCar1, textoVermelho, tela, movXCar2, textoAmarelo, movXCar3, textoAzul, ganhou3, ganhou2, ganhou1)
+        if alguma[0] == True:
+            ganhou1 = True
+            acabou = True
+        if alguma[1] == True:
+            ganhou2 = True
+            acabou = True
+        if alguma[2] == True:
+            ganhou3 = True
+            acabou = True
 
     pygame.display.update()
     clock.tick(60)
