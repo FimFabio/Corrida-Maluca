@@ -3,7 +3,7 @@ import cx_Freeze
 
 executables = [
     cx_Freeze.Executable(script="main.py", icon="Recursos/icone.ico"),
-    cx_Freeze.Executable(script="function.py", icon="Recursos/icone.ico")
+    cx_Freeze.Executable(script="functions.py", icon="Recursos/icone.ico")
 ]
 
 cx_Freeze.setup(
