@@ -1,6 +1,8 @@
 import pygame
 import random
 from functions import final_position
+from functions import att_tela
+from functions import acelera
 
 pygame.init()
 tamanho = (1000,592)
@@ -50,13 +52,12 @@ while True:
    
     
     if not acabou:
-        movXCar1 = movXCar1 + random.randint(0,10)
-        movXCar2 = movXCar2 + random.randint(0,8)
-        movXCar3 = movXCar3 + random.randint(0,11)
-        tela.blit(fundo, (0,0))
-        tela.blit(carro1, (movXCar1,posYCar1))
-        tela.blit(carro2, (movXCar2,posYCar2))
-        tela.blit(carro3, (movXCar3,posYCar3))
+        lista = acelera(movXCar1, movXCar2, movXCar3)
+        movXCar1 = lista[0]
+        movXCar2 = lista[1]
+        movXCar3 = lista[2]
+        att_tela(carro1, movXCar1, posYCar1, carro2, movXCar2, posYCar2, carro3, movXCar3, posYCar3, fundo, tela)
+        
     
     else:
         pygame.mixer.music.stop()
